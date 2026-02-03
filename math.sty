@@ -73,3 +73,20 @@
   \end{aligned}
   \ifstrempty{#1}{\end{equation*}}{\end{equation}}
 }
+
+\ExplSyntaxOn
+\newcommand\optAs[3]{%
+\begin{table}[H]
+\centering
+\begin{tabular}{l l}
+  \str_case_e:nnF{#1}{
+    {min} {minimalisujte}
+    {max} {maximalisujte}
+  }{
+    \PackageError{cfg}{'#1' is not a supported}{}
+  } & $#2$ \\
+  za \space podmínek & {$\!\begin{array}[t]{@{}l@{}ll} #3 \end{array}$}
+\end{tabular}
+\end{table}
+}
+\ExplSyntaxOff
