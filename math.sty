@@ -1,0 +1,74 @@
+% math.sty
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{math}[Math Optimization Config]
+
+\RequirePackage{base}
+
+\usepackage{bbold}
+\usepackage{optidef}
+\usepackage{etoolbox}
+\usepackage{stmaryrd}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{fillbetween}
+
+% ---------- TIKZ LIBRARIES ----------
+\usetikzlibrary{patterns, intersections, backgrounds}
+
+% ---------- MACROS ----------
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\F}{\mathcal{F}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\M}{\mathbb{M}}
+\renewcommand{\S}{\mathbb{S}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\1}{\mathbb{1}}
+
+
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\dist}{dist}
+\DeclareMathOperator*{\lev}{lev}
+\DeclareMathOperator*{\Int}{int}
+\DeclareMathOperator*{\rank}{rank}
+\DeclareMathOperator*{\ext}{ext}
+\DeclareMathOperator*{\conv}{conv}
+\DeclareMathOperator{\sign}{sign}
+
+
+% ---------- CUSTOM ENVIRONMENT FOR OPTIMIZATION PROBLEMS ------
+%
+% Usage:
+% \Opt[<label>]{<min/max>}{<vars>}{<function to optimize>}{<subject to>}
+%
+% Arguments:
+% #1 [optional]:  Label for numbering and references.
+%                 If not entered, the equation will not be numbered.
+% #2 {mandatory}: String "min" or "max".
+% #3 {optional}:  Variables, through which optimization is performed (e.g.. w, \xi).
+% #4 {mandatory}: Mathematical expression for a function.
+% #5 {mandatory}: Restrictive conditions. Separate multiple conditions using \\.
+%---------------------------------------------------------------
+\newcommand{\Opt}[5][]{%
+  \ifstrempty{#1}{\begin{equation*}}{\begin{equation}\label{#1}}
+  \begin{aligned}
+    & \ifstrempty{#3}{\ifstrequal{#2}{min}{\text{minimalisujte}}{\text{maximalisujte}}}
+    {\underset{#3}{\ifstrequal{#2}{min}{\text{minimalisujte}}{\text{maximalisujte}}}}
+      & & #4 \\
+    & \text{za podmínek}
+      % we use ‘{r @{} l}’ for alignment
+      % to two columns (right and left) without a space between them.
+      & & {
+        \renewcommand{\arraystretch}{1.25}
+        \begin{array}[t]{r @{} l}
+            #5
+        \end{array}
+          }
+  \end{aligned}
+  \ifstrempty{#1}{\end{equation*}}{\end{equation}}
+}

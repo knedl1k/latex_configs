@@ -1,0 +1,20 @@
+% logics.sty
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{logics}[Logic & Automata Config]
+
+\RequirePackage{base}
+
+\usepackage{nicematrix}
+\usepackage{forest}
+
+% ---------- TIKZ AUTOMATA SETTINGS ----------
+\usetikzlibrary{automata, arrows, arrows.meta}
+
+\tikzset{
+    % ->, % makes the edges directed
+    >=stealth', % makes the arrow heads bold
+    node distance=3cm, % specifies the minimum distance between two nodes
+    % dot/.style = {circle, fill, inner sep=2pt, node contents={}, label=#1},
+    % every edge/.style = {draw, postaction=decorate},
+    % every loop/.style={in=120,out=60,looseness=0},
+}
