@@ -8,16 +8,15 @@ git submodule add git@github.com:knedl1k/latex_configs.git configs
 ```
 It will create a directory called `configs` with all predefined styles, macros and configs.
 
-Usage is as simple as
+Usage is as simple as putting this
 ```latex
-\usepackage{configs/logics}
-```
-for example.
+\makeatletter
+\def\input@path{{../configs/}{./}} 
+\makeatother
 
-## Updating
-```bash
-git submodule update --init
+\usepackage{math}
 ```
+into your main file, for example.
 
 ## License
 GNU General Public License v3.0
