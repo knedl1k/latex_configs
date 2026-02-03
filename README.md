@@ -18,6 +18,12 @@ Usage is as simple as putting this
 ```
 into your main file, for example.
 
+## Updating
+To update configs with to the latest version, use
+```bash
+git submodule update --remote
+```
+
 ## License
 GNU General Public License v3.0
 
