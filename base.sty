@@ -6,7 +6,9 @@
 \setlength{\parindent}{0mm} 
 \setlength{\parskip}{1.4ex}
 
-\usepackage[shortlabels]{enumitem}
+\@ifclassloaded{beamer}{}{
+    \usepackage[shortlabels]{enumitem}
+}
 \usepackage{multicol}
 \usepackage{tabularx}
 \usepackage{float}

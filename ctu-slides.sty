@@ -1,0 +1,47 @@
+% ctu-slides.sty
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{ctu-slides}[CTU Slides Config]
+
+\RequirePackage{base}
+\RequirePackage{ctu}
+
+\setbeamercolor{title}{fg=CVUTBlue}
+\setbeamercolor{frametitle}{fg=CVUTBlue}
+\setbeamercolor{structure}{fg=CVUTBlue}
+\setbeamercolor{normal text}{fg=CVUTBlack}
+\setbeamercolor{alerted text}{fg=CVUTLightBlue} 
+\setbeamercolor{footnote}{fg=CVUTGrey}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{author in head/foot}%
+    \hspace*{2em} \color{CVUTGrey} \textbf{\insertframenumber{} / \inserttotalframenumber}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \color{CVUTGrey}\usebeamerfont{date in head/foot}\insertshortauthor\hspace*{2em}
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\setbeamerfont{frametitle}{size=\Large, series=\bfseries}
+\setbeamertemplate{frametitle}{%
+    \vspace{0.3cm}
+    
+    \begin{columns}[c]
+        \begin{column}{0.83\textwidth}
+            \hspace{0.1cm}
+            \insertframetitle
+        \end{column}
+        
+        \begin{column}{0.3\textwidth}
+            \raggedleft
+            \includegraphics[width=1.8cm, keepaspectratio]{../configs/media/logo_fel.jpg} 
+            \hspace{0.3cm}
+        \end{column}
+    \end{columns}
+    \noindent\makebox[\linewidth]{\color{CVUTBlue}\rule{\paperwidth}{0.4pt}} 
+}
+
